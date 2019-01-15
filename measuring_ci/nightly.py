@@ -5,6 +5,10 @@ from datetime import datetime
 import taskcluster
 import yaml
 
+from measuring_ci.taskcluster_utils import (
+    get_async_queue, get_sync_queue, get_async_index
+)
+
 log = logging.getLogger()
 
 
@@ -27,8 +31,8 @@ async def fetch_nightlies(date, project='mozilla-central'):
         date=sanitize_date(date),
     )
 
-    idx = taskcluster.aio.Index()
-    queue = taskcluster.aio.Queue()
+    idx = get_async_index()
+    queue = get_async_queue()
 
     ret = await idx.listNamespaces(index)
 
@@ -64,7 +68,7 @@ async def fetch_nightlies(date, project='mozilla-central'):
             }
             # Find the version, hidden in the parameters of the
             # decision task's artifacts
-            sync_queue = taskcluster.Queue()
+            sync_queue = get_sync_queue()
             parameters_response = sync_queue.getLatestArtifact(taskId=task_def['taskGroupId'], name='public/parameters.yml')
             # print(parameters_response)
 

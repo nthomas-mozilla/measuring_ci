@@ -2,6 +2,8 @@ import logging
 
 import taskcluster
 
+from measuring_ci.taskcluster_utils import get_async_queue, get_async_index
+
 log = logging.getLogger()
 
 
@@ -24,8 +26,8 @@ async def find_taskgroup_by_revision(
         product=product,
     )
 
-    idx = taskcluster.aio.Index()
-    queue = taskcluster.aio.Queue()
+    idx = get_async_index()
+    queue = get_async_queue()
 
     log.debug('Looking for taskId via index {}'.format(index))
     try:
