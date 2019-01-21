@@ -1,0 +1,6 @@
+pushlog_url: 'https://hg.mozilla.org/{project}/json-pushes?version=2'
+pushlog_cache_file: 's3://mozilla-releng-metrics/measuring_ci/pushlog_cache_{project}.json'
+costs_csv_file: 's3://mozilla-releng-metrics/measuring_ci/aws_cost_estimates.csv'
+costs_scriptworker_csv_file: 's3://mozilla-releng-metrics/measuring_ci/aws_cost_estimates_scriptworker.csv'
+TC_CACHE_DIR: 'taskgraph_cache/;s3://mozilla-releng-metrics/taskgraph_cache/'
+cost_output: '{project}'
