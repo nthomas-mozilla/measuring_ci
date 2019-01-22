@@ -1,1 +1,1 @@
--e git+https://github.com/srfraser/taskhuddler#egg=taskhuddler
+-e git+https://github.com/nthomas-mozilla/taskhuddler@tier2_3_costs#egg=taskhuddler
